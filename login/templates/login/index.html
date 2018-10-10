@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}主页{% endblock %}
+{% block content %}
+    {% if message %}
+        <div class = "alert alert-warning">{{message}}</div>
+    {% endif %}
+    {% if all_content %}
+        {% for content in all_content %}
+            <a href="{% url 'login:content' content.id %}">{{content.title}}</a>
+            <br>
+        {% endfor %}
+    {% else %}
+        <h1>空空如也</h1>
+    {% endif %}
+    <h1><a href ="{% url 'login:edit_page' 0 %}">新建文章</a></h1>
+{% endblock %}
